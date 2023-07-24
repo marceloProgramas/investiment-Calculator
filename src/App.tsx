@@ -9,17 +9,18 @@ function calcular(
   valorAtual = 0,
   Investido = true,
   ){
+  let valorNovo = valorAtual
   for(let i = 0; i<periodo; i++ ){
-    valorAtual += (valorAtual*(porcentagem/100))
-    valorAtual += Valor_investido
+    valorNovo += (valorNovo*(porcentagem/100))
+    valorNovo += Valor_investido
   }
-  if(Investido) return Math.floor(valorAtual)
-  valorAtual = 0
+  if(Investido) return Math.floor(valorNovo)
+  valorNovo = 0 + valorAtual
   
   for(let i = 0; i<periodo; i++ ){
-    valorAtual += Valor_investido
+    valorNovo += Valor_investido
   }
-  return Math.floor(valorAtual)
+  return Math.floor(valorNovo)
 }
 
 function App() {
@@ -29,27 +30,38 @@ function App() {
   return (
     <S.wrapper>
       <S.titulo>Calculadora</S.titulo>
-      <S.text>periodo</S.text>
-      <S.input type="number"/>
-      <S.text>porcentagem de lucro por periodo</S.text>
-      <S.input type="number"/>
-      <S.text>Valor investido mensal</S.text>
-      <S.input type="number"/>
-      <S.text>valor inicial</S.text>
-      <S.input type="number" />
+      <S.DivInput>
+        <S.inputs>
+          <S.text>Periodo</S.text>
+          <S.input type="number"/>
+        </S.inputs>
+        <S.inputs>
+          <S.text>Porcentagem de lucro<br/> por periodo</S.text>
+          <S.input type="number"/>
+        </S.inputs>
+      </S.DivInput>
+      <S.DivInput>
+        <S.inputs>
+          <S.text>Valor inicial</S.text>
+          <S.input type="number" />
+        </S.inputs>
+        <S.inputs>
+          <S.text>Valor investido mensal</S.text>
+          <S.input type="number"/>
+        </S.inputs>
+      </S.DivInput>
       <S.btn value='calcular' type = "button" onClick={() => {
         const input = document.querySelectorAll("input");
         setValIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[2].value), Number(input[3].value)));
         setValNaoIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[2].value), Number(input[3].value), false));
         setMos(true);
       }}/>
-      {Mos&& (
-      <>
-      <S.text>Valor investido: {ValIn}</S.text>
-      <S.text>Valor não investido: {ValNaoIn}</S.text>
-      </>      
-      )
-    }
+      {Mos &&(
+      <S.DivInput>
+        <S.text>Valor investido: {ValIn}</S.text>
+        <S.text>Valor não investido: {ValNaoIn}</S.text>
+      </S.DivInput>
+      )}
     </S.wrapper>
   )
 }
