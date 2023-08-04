@@ -52,8 +52,8 @@ function App() {
       </S.DivInput>
       <S.btn value='calcular' type = "button" onClick={() => {
         const input = document.querySelectorAll("input");
-        setValIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[2].value), Number(input[3].value)));
-        setValNaoIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[2].value), Number(input[3].value), false));
+        setValIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[3].value), Number(input[2].value)));
+        setValNaoIn(calcular(Number(input[0].value), Number(input[1].value), Number(input[3].value), Number(input[2].value), false));
         setMos(true);
       }}/>
       {Mos &&(
