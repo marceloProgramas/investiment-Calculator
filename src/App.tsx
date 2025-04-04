@@ -15,12 +15,12 @@ function calcular(
     valorNovo += Valor_investido
     console.log(valorNovo);
   }
-  return (valorNovo.toLocaleString('pt-BR'));
+  return (valorNovo.toLocaleString('pt-BR',{ minimumFractionDigits: 2}));
 }
 
 function App() {
-  const [ValIn, setValIn] = useState(0);
-  const [ValNaoIn, setValNaoIn] = useState(0);
+  const [ValIn, setValIn] = useState<String | undefined>(undefined);
+  const [ValNaoIn, setValNaoIn] = useState<String | undefined>(undefined) ;
   const [Mos, setMos] = useState(false)
   return (
     <S.wrapper>
