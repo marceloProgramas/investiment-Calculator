@@ -11,16 +11,11 @@ function calcular(
   ){
   let valorNovo = valorAtual
   for(let i = 0; i<periodo; i++ ){
-    valorNovo += (valorNovo*(porcentagem/100))
+    if(Investido) valorNovo += (valorNovo*(porcentagem/100))
     valorNovo += Valor_investido
+    console.log(valorNovo);
   }
-  if(Investido) return Math.floor(valorNovo)
-  valorNovo = 0 + valorAtual
-  
-  for(let i = 0; i<periodo; i++ ){
-    valorNovo += Valor_investido
-  }
-  return Math.floor(valorNovo)
+  return (valorNovo.toLocaleString('pt-BR'));
 }
 
 function App() {
